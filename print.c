@@ -35,6 +35,14 @@ int _printf(const char *format, ...)
             if (format[i + 1] == 'c') /* character placeholder */
                 printed += _putchar(va_arg(args, int));
             else if (format[i + 1] == 's') /* string placeholder */
+	      
+	      /////////////////////////////////////////////////////
+	      
+	   else if (format[i + 1] == 'd' || *format == 'i') /* integer placeholder */
+                printed += _putchar(va_arg(args, int));
+	   
+	   		
+            else if (format[i + 1] == 'i') /* integer placeholder */
                 printed += print_string(va_arg(args, char *));
         }
         else /* usual character */
