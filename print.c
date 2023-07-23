@@ -20,14 +20,13 @@ int _printf(const char *format, ...)
 {
     va_list args;
     unsigned long int i, printed = 0;
-    char buffer[1024]; // Temporary buffer for integer to string conversion
 
     va_start(args, format);
     for (i = 0; format[i]; i++)
     {
         if (format[i] == '%')
         {
-            i++; // Move past the '%'
+            i++;
             if (format[i] == '\0')
                 break;
 
@@ -39,11 +38,7 @@ int _printf(const char *format, ...)
             {
                 printed += print_string(va_arg(args, char *));
             }
-            else if (format[i] == 'd' || format[i] == 'i')
-            {
-                sprintf(buffer, "%d", va_arg(args, int)); // Convert integer to string
-                printed += print_string(buffer); // Print the string
-            }
+
             else
             {
                 putchar('%');
@@ -60,10 +55,4 @@ int _printf(const char *format, ...)
     va_end(args);
 
     return printed;
-}
-
-int main()
-{
-    _printf("Hello, %s! The answer is %d.\n", "John", 42);
-    return 0;
 }
