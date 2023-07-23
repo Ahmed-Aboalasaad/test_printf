@@ -33,11 +33,9 @@ int _printf(const char *format, ...)
         if (format[i] == '%')
         {
             if (format[i + 1] == 'c') /* character placeholder */
-                _putchar(va_arg(args, int));
+                printed += _putchar(va_arg(args, int));
             else if (format[i + 1] == 's') /* string placeholder */
-                print_string(va_arg(args, char *));
-            else /* just the percentage character */
-                _putchar('%');
+                printed += print_string(va_arg(args, char *));
         }
         else /* usual character */
             _putchar(format[i]);
